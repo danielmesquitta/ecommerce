@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { IoLogoEuro, IoIosBasket } from 'react-icons/io';
 
 import { Container, Content, Logo, Cart } from './styles';
+import { Product } from '../../pages/Home';
+import { ReduxState } from '../../store/modules/rootReducer';
 
 const Header: React.FC = () => {
+  const cart = useSelector<ReduxState, Product[]>(state => state.cart);
+
+  useEffect(() => {
+    console.log(cart);
+  }, [cart]);
+
   return (
     <Container>
       <Content>
@@ -15,7 +24,7 @@ const Header: React.FC = () => {
         <Cart to="/cart">
           <div>
             <strong>Meu carrinho</strong>
-            <span>3 items</span>
+            <span>{cart.length} items</span>
           </div>
           <IoIosBasket size={36} color="#222" />
         </Cart>
