@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 export const Container = styled.header`
   background: #fafafa;
+  margin-bottom: 4rem;
 `;
 
 export const Content = styled.div`
@@ -12,6 +13,7 @@ export const Content = styled.div`
   max-width: 120rem;
   width: 100%;
   margin: auto;
+
   > *:hover {
     opacity: 0.8;
     transition: all 0.2s;
