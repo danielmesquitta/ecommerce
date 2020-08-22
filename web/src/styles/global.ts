@@ -1,7 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
 import breakpoints from './breakpoints';
-import colors from './colors';
 
 export default createGlobalStyle`
   /*Default*/
@@ -24,7 +23,7 @@ export default createGlobalStyle`
     min-height: 100%;
   }
   body{
-    background: ${colors.background} fixed center no-repeat cover;
+    background: #f1f1f1 fixed center no-repeat cover;
     -webkit-font-smoothing: antialiased !important;
   }  
   body, input, button{
