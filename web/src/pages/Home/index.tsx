@@ -5,6 +5,7 @@ import { IoIosCart } from 'react-icons/io';
 import { Container } from './styles';
 import api from '../../services/api';
 import formatPrice from '../../utils/formatPrice';
+import CartActions from '../../store/modules/cart/actions';
 
 interface ApiResponse {
   id: number;
@@ -33,10 +34,7 @@ const Home: React.FC = () => {
   }, []);
 
   function handleAddProduct(payload: Product) {
-    dispatch({
-      type: 'ADD_TO_CART',
-      payload,
-    });
+    dispatch(CartActions.addToCart(payload));
   }
 
   return (

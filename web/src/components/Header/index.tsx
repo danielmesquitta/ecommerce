@@ -1,17 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { IoLogoEuro, IoIosBasket } from 'react-icons/io';
 
 import { Container, Content, Logo, Cart } from './styles';
+
 import { Product } from '../../pages/Home';
 import { ReduxState } from '../../store/modules/rootReducer';
 
 const Header: React.FC = () => {
   const cart = useSelector<ReduxState, Product[]>(state => state.cart);
-
-  useEffect(() => {
-    console.log(cart);
-  }, [cart]);
 
   return (
     <Container>

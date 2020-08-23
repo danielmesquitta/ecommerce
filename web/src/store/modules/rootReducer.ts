@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 
 import cart from './cart/reducer';
-import { Product } from '../../pages/Home';
+import { ReduxProduct } from './cart/reducer';
 
 export interface ReduxState {
-  cart: Product[];
+  cart: ReduxProduct[];
 }
 
 export default combineReducers({
