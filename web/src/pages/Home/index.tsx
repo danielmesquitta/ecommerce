@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { IoIosCart } from 'react-icons/io';
 
 import { Container } from './styles';
 import api from '../../services/api';
 import formatPrice from '../../utils/formatPrice';
+
 import CartActions from '../../store/modules/cart/actions';
+import { ReduxState } from '../../store/modules/rootReducer';
+import { ReduxProduct } from '../../store/modules/cart/reducer';
 
 interface ApiResponse {
   id: number;
@@ -20,6 +23,7 @@ export interface Product extends ApiResponse {
 
 const Home: React.FC = () => {
   const dispatch = useDispatch();
+  const cart = useSelector<ReduxState, ReduxProduct[]>(state => state.cart);
 
   const [products, setProducts] = useState<Product[]>([]);
 
@@ -39,7 +43,7 @@ const Home: React.FC = () => {
 
   return (
     <Container>
-      {products.map(product => (
+      {products.map((product, index) => (
         <li key={product.id}>
           <img src={product.image} alt={product.title} />
           <strong>{product.title}</strong>
@@ -48,7 +52,11 @@ const Home: React.FC = () => {
           <button type="button" onClick={() => handleAddProduct(product)}>
             <div>
               <IoIosCart size="1.6rem" color="#fafafa" />
-              <span>3</span>
+              <span>
+                {cart.length > 0 &&
+                  cart.findIndex(product => product.id === index + 1) !== -1 &&
+                  cart[index].amount}
+              </span>
             </div>
             <p>Adiconar ao carrinho</p>
           </button>

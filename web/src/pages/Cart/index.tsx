@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   IoIosRemoveCircleOutline,
@@ -8,6 +8,8 @@ import {
 
 import { Container, ProductTable, Total } from './styles';
 
+import formatPrice from '../../utils/formatPrice';
+
 import { ReduxState } from '../../store/modules/rootReducer';
 import { ReduxProduct } from '../../store/modules/cart/reducer';
 import CartActions from '../../store/modules/cart/actions';
@@ -15,6 +17,20 @@ import CartActions from '../../store/modules/cart/actions';
 const Cart: React.FC = () => {
   const cart = useSelector<ReduxState, ReduxProduct[]>(state => state.cart);
   const dispatch = useDispatch();
+
+  const [subtotal, setSubtotal] = useState<string[]>([]);
+  const [total, setTotal] = useState('');
+
+  useEffect(() => {
+    const subtotal = cart.map(product => product.price * product.amount);
+    const total = subtotal.reduce(
+      (total: number, num: number) => total + num,
+      0
+    );
+
+    setSubtotal(subtotal.map(formatPrice));
+    setTotal(formatPrice(total));
+  }, [cart]);
 
   function handleRemove(id: number) {
     dispatch(CartActions.removeFromCart(id));
@@ -41,7 +57,7 @@ const Cart: React.FC = () => {
           </tr>
         </thead>
         <tbody>
-          {cart.map(product => (
+          {cart.map((product, index) => (
             <tr>
               <td>
                 <img src={product.image} alt={product.title} />
@@ -68,7 +84,7 @@ const Cart: React.FC = () => {
                 </div>
               </td>
               <td>
-                <strong>R$360,00</strong>
+                <strong>{subtotal[index]}</strong>
               </td>
               <td>
                 <button onClick={() => handleRemove(product.id)}>
@@ -85,7 +101,7 @@ const Cart: React.FC = () => {
 
         <Total>
           <span>Total</span>
-          <strong>R$360,00</strong>
+          <strong>{total}</strong>
         </Total>
       </footer>
     </Container>
