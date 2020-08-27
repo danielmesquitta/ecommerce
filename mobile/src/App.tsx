@@ -13,7 +13,6 @@ const App: React.FC = () => {
         backgroundColor="transparent"
         translucent
       />
-
       <Routes />
     </>
   );
