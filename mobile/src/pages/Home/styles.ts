@@ -3,6 +3,13 @@ import { FlatList } from 'react-native';
 
 import ApiResponse from '~/@types/ApiResponse';
 
-export const Container = styled.View``;
+export const Container = styled.View`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  background: #eee;
+`;
 
-export const List = styled(FlatList as new () => FlatList<ApiResponse>)``;
+export const List = styled(FlatList as new () => FlatList<ApiResponse>)`
+  flex: 1;
+`;

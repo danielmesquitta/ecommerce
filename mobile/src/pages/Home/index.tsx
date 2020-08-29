@@ -20,6 +20,7 @@ const Home: React.FC = () => {
         data={apiResponse}
         keyExtractor={item => String(item.id)}
         renderItem={({ item }) => <ListItem item={item} />}
+        horizontal
       />
     </Container>
   );
