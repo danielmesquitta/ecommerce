@@ -1,4 +1,4 @@
-export default interface ApiResponse {
+export interface ApiResponse {
   id: number;
   title: string;
   price: number;

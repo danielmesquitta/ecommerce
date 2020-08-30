@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 import { FlatList } from 'react-native';
 
-import ApiResponse from '~/@types/ApiResponse';
+import { ApiResponse } from '~/@types';
 
 export const Container = styled.View`
   flex: 1;

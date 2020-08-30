@@ -12,7 +12,7 @@ import {
   IconContainer,
   ButtonText,
 } from './styles';
-import ApiResponse from '~/@types/ApiResponse';
+import { ApiResponse } from '~/@types';
 
 interface Props {
   item: ApiResponse;

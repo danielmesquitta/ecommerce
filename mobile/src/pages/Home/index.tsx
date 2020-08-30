@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Container, List } from './styles';
 import ListItem from '~/components/ListItem';
 import api from '~/services/api';
-import ApiResponse from '~/@types/ApiResponse';
+import { ApiResponse } from '~/@types';
 
 const Home: React.FC = () => {
   const [apiResponse, setApiResponse] = useState<ApiResponse[]>([]);
