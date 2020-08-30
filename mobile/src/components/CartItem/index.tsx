@@ -1,4 +1,6 @@
 import React from 'react';
+import { TouchableOpacity } from 'react-native';
+import { useDispatch } from 'react-redux';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import {
@@ -15,38 +17,61 @@ import {
   Subtotal,
 } from './styles';
 
-interface Props {}
+import { Product } from '~/@types';
+import CartActions from '~/store/modules/cart/actions';
 
-const CartItem: React.FC = () => {
+interface Props {
+  product: Product;
+}
+
+const CartItem: React.FC<Props> = ({ product }) => {
+  const dispatch = useDispatch();
+  const { id, amount } = product;
+
+  function handleRemove() {
+    dispatch(CartActions.removeFromCart(id));
+  }
+
+  function handleIncrement() {
+    dispatch(CartActions.updateAmount(id, amount + 1));
+  }
+
+  function handleDecrement() {
+    dispatch(CartActions.updateAmount(id, amount - 1));
+  }
+
   return (
     <Container>
       <Header>
         <HeaderImage
           source={{
-            uri:
-              'https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis1.jpg',
+            uri: product.image,
           }}
         />
 
         <HeaderText>
-          <HeaderTitle>Tenis de caminhada leve confortavel</HeaderTitle>
-          <HeaderPrice>R$179,90</HeaderPrice>
+          <HeaderTitle>{product.title}</HeaderTitle>
+          <HeaderPrice>{product.formattedPrice}</HeaderPrice>
         </HeaderText>
 
-        <DeleteButton>
+        <DeleteButton onPress={handleRemove}>
           <Icon name="trash" color="steelblue" size={24} />
         </DeleteButton>
       </Header>
 
       <Footer>
         <Amount>
-          <Icon name="remove-circle-outline" color="steelblue" size={24} />
+          <TouchableOpacity onPress={handleDecrement}>
+            <Icon name="remove-circle-outline" color="steelblue" size={24} />
+          </TouchableOpacity>
 
-          <AmountQty value="2" editable={false} />
+          <AmountQty value={String(amount)} editable={false} />
 
-          <Icon name="add-circle-outline" color="steelblue" size={24} />
+          <TouchableOpacity onPress={handleIncrement}>
+            <Icon name="add-circle-outline" color="steelblue" size={24} />
+          </TouchableOpacity>
         </Amount>
-        <Subtotal>R$179,90</Subtotal>
+        <Subtotal>{product.formattedSubtotal}</Subtotal>
       </Footer>
     </Container>
   );

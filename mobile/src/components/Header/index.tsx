@@ -1,10 +1,13 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import { Container, Logo, LogoText, Cart, Amount, AmountText } from './styles';
+import { ReduxState, Cart as ICart } from '~/@types';
 
 const Header: React.FC = () => {
+  const cart = useSelector<ReduxState, ICart>(state => state.cart);
   const navigation = useNavigation();
 
   function handleNavigateToHome() {
@@ -24,9 +27,11 @@ const Header: React.FC = () => {
 
       <Cart onPress={handleNavigateToCart}>
         <Icon name="md-cart" color="#222" size={40} />
-        <Amount>
-          <AmountText>2</AmountText>
-        </Amount>
+        {cart.products.length > 0 && (
+          <Amount>
+            <AmountText>{cart.products.length}</AmountText>
+          </Amount>
+        )}
       </Cart>
     </Container>
   );

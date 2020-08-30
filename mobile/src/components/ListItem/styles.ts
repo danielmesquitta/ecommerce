@@ -47,10 +47,17 @@ export const Button = styled(RectButton)`
 `;
 
 export const IconContainer = styled.View`
+  flex-direction: row;
   background: #0002;
   justify-content: center;
   align-items: center;
-  padding: 15px 20px;
+  padding: 15px 10px;
+`;
+
+export const Amount = styled.Text`
+  margin-left: 5px;
+  font-size: 16px;
+  color: #fafafa;
 `;
 
 export const ButtonText = styled.Text`
