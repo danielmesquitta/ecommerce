@@ -19,12 +19,15 @@ import { ReduxState, Cart, Product, ApiResponse } from '~/@types';
 
 import CartActions from '~/store/modules/cart/actions';
 
+import formatPrice from '~/utils/formatPrice';
+
 interface Props {
   item: ApiResponse;
 }
 
 const ListItem: React.FC<Props> = ({ item }) => {
   const cart = useSelector<ReduxState, Cart>(state => state.cart);
+  const [formattedPrice, setFormattedPrice] = useState('');
   const dispatch = useDispatch();
 
   const [productFoundInCart, setProductFoundInCart] = useState<Product>();
@@ -32,6 +35,10 @@ const ListItem: React.FC<Props> = ({ item }) => {
   function onAddToCart() {
     dispatch(CartActions.addToCart(item));
   }
+
+  useEffect(() => {
+    setFormattedPrice(formatPrice(item.price));
+  }, [item.price]);
 
   useEffect(() => {
     setProductFoundInCart(
@@ -47,7 +54,7 @@ const ListItem: React.FC<Props> = ({ item }) => {
 
       <TextContainer>
         <Title>{item.title}</Title>
-        <Price>R${item.price}</Price>
+        <Price>{formattedPrice}</Price>
       </TextContainer>
 
       <Button onPress={onAddToCart}>

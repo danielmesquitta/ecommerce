@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 
 import {
@@ -16,10 +16,6 @@ import { ReduxState, Cart as ICart } from '~/@types';
 
 const Cart: React.FC = () => {
   const cart = useSelector<ReduxState, ICart>(state => state.cart);
-
-  useEffect(() => {
-    console.log(cart);
-  }, [cart]);
 
   return (
     <Container>

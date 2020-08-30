@@ -26,17 +26,16 @@ interface Props {
 
 const CartItem: React.FC<Props> = ({ product }) => {
   const dispatch = useDispatch();
-  const { id, amount } = product;
 
-  function handleRemove() {
+  function handleRemove(id: number) {
     dispatch(CartActions.removeFromCart(id));
   }
 
-  function handleIncrement() {
+  function handleIncrement(id: number, amount: number) {
     dispatch(CartActions.updateAmount(id, amount + 1));
   }
 
-  function handleDecrement() {
+  function handleDecrement(id: number, amount: number) {
     dispatch(CartActions.updateAmount(id, amount - 1));
   }
 
@@ -54,20 +53,22 @@ const CartItem: React.FC<Props> = ({ product }) => {
           <HeaderPrice>{product.formattedPrice}</HeaderPrice>
         </HeaderText>
 
-        <DeleteButton onPress={handleRemove}>
+        <DeleteButton onPress={() => handleRemove(product.id)}>
           <Icon name="trash" color="steelblue" size={24} />
         </DeleteButton>
       </Header>
 
       <Footer>
         <Amount>
-          <TouchableOpacity onPress={handleDecrement}>
+          <TouchableOpacity
+            onPress={() => handleDecrement(product.id, product.amount)}>
             <Icon name="remove-circle-outline" color="steelblue" size={24} />
           </TouchableOpacity>
 
-          <AmountQty value={String(amount)} editable={false} />
+          <AmountQty value={String(product.amount)} editable={false} />
 
-          <TouchableOpacity onPress={handleIncrement}>
+          <TouchableOpacity
+            onPress={() => handleIncrement(product.id, product.amount)}>
             <Icon name="add-circle-outline" color="steelblue" size={24} />
           </TouchableOpacity>
         </Amount>

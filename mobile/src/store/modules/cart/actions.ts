@@ -6,7 +6,7 @@ export default {
   },
 
   removeFromCart(id: number) {
-    return { type: '@cart/REMOVE', payload: id };
+    return { type: '@cart/REMOVE', payload: { id } };
   },
 
   updateAmount(id: number, amount: number) {
@@ -14,4 +14,10 @@ export default {
   },
 };
 
-export type Payload = ApiResponse | number | { id: number; amount: number };
+export type AddPayload = ApiResponse;
+
+export type RemovePayload = { id: number };
+
+export type UpdateAmountPayload = { id: number; amount: number };
+
+export type Payload = AddPayload | RemovePayload | UpdateAmountPayload;
