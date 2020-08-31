@@ -5,7 +5,6 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "server": "json-server --host 192.168.100.26 server.json -p 3333",
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
@@ -43,7 +42,6 @@
     "babel-plugin-root-import": "^6.5.0",
     "eslint": "^6.5.1",
     "jest": "^25.1.0",
-    "json-server": "^0.16.1",
     "metro-react-native-babel-preset": "^0.59.0",
     "prettier": "^2.0.4",
     "react-test-renderer": "16.13.1",
