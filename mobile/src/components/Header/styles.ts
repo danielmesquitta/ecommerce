@@ -1,5 +1,4 @@
 import styled from 'styled-components/native';
-import { TouchableOpacity } from 'react-native';
 
 export const Container = styled.SafeAreaView`
   flex-direction: row;
@@ -11,7 +10,7 @@ export const Container = styled.SafeAreaView`
   border-bottom-width: 2px;
 `;
 
-export const Logo = styled(TouchableOpacity)`
+export const Logo = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
 `;
@@ -21,7 +20,7 @@ export const LogoText = styled.Text`
   font-size: 22px;
 `;
 
-export const Cart = styled(TouchableOpacity)`
+export const Cart = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
   padding-right: 3px;

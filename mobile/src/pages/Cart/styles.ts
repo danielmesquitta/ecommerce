@@ -51,3 +51,34 @@ export const ButtonText = styled.Text`
   text-transform: uppercase;
   font-weight: bold;
 `;
+
+export const Warning = styled.View`
+  background: #fff;
+  width: 100%;
+  border-radius: 5px;
+  background: #fafafa;
+
+  align-items: center;
+  justify-content: center;
+  padding: 50px 40px;
+`;
+
+export const WarningText = styled.Text`
+  font-size: 18px;
+  text-align: center;
+  font-weight: bold;
+  color: #222;
+`;
+
+export const GoBackLink = styled(RectButton)`
+  background: steelblue;
+  border-radius: 5px;
+  align-items: center;
+  padding: 10px 25px;
+  margin-top: 20px;
+`;
+
+export const GoBackLinkText = styled.Text`
+  font-size: 16px;
+  color: #fafafa;
+`;

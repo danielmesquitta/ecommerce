@@ -55,6 +55,18 @@ const cart = produce((draft: Cart, action: Action) => {
       );
       if (index >= 0) {
         draft.products.splice(index, 1);
+
+        //If there is any item in the cart, calculate the total, else, just set it to 0
+        if (draft.products.length > 0) {
+          draft.total = draft.products
+            .map(product => product.subtotal)
+            .reduce(
+              (accumulator, currentSubtotal) => accumulator + currentSubtotal
+            );
+        } else {
+          draft.total = 0;
+        }
+        draft.formattedTotal = formatPrice(draft.total);
       }
       break;
     }

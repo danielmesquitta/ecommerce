@@ -1,5 +1,4 @@
 import styled from 'styled-components/native';
-import { TouchableOpacity } from 'react-native';
 
 export const Container = styled.View`
   width: 100%;
@@ -25,7 +24,7 @@ export const HeaderTitle = styled.Text``;
 
 export const HeaderPrice = styled.Text``;
 
-export const DeleteButton = styled(TouchableOpacity)`
+export const DeleteButton = styled.TouchableOpacity`
   padding: 20px;
 `;
 
