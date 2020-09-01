@@ -1,11 +1,9 @@
-<h1 align="center">
-  <img src="logo.png" width="60%" />
-</h1>
+# € eCommerce
 
 [WEB](#web) and [MOBILE](#mobile) application with a [fake REST-API](#fake-server).
 
 <br><br>
-<img src="mockup.png">
+<img src="docs/mockup.png">
 <br>
 
 ## FAKE SERVER
@@ -28,7 +26,7 @@
 <br/>
 
 <p align="center">
-  <img src="demo-web.gif" />
+  <img src="docs/demo-web.gif" />
 </p>
 
 <br/>
@@ -48,7 +46,7 @@
 <br/>
 
 <p align="center">
-  <img src="demo-mobile.gif" width="200px" />
+  <img src="docs/demo-mobile.gif" width="200px" />
 </p>
 
 <br/>
@@ -98,6 +96,15 @@ $ yarn start
 # Go to the correct folder
 $ cd web
 
+# Open api.ts with your code editor
+$ code src/services/api.ts
+```
+
+Update the server wifi ip.
+```baseURL: 'http://<YOUR_WIFI_IP>:3333'```
+
+
+```shell
 # Install the dependencies
 $ yarn
 
@@ -111,11 +118,11 @@ $ yarn start
 # Go to the correct folder
 $ cd mobile
 
-# Open the api file with your code editor
+# Open api.ts with your code editor
 $ code src/services/api.ts
 ```
 
-Here you will also need to update the server wifi ip.
+Update the server wifi ip.
 ```baseURL: 'http://<YOUR_WIFI_IP>:3333'```
 
 ```shell
