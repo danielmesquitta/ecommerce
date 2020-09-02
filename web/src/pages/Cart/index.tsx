@@ -45,66 +45,75 @@ const Cart: React.FC = () => {
   }
 
   return (
-    <Container>
-      <ProductTable>
-        <thead>
-          <tr>
-            <th />
-            <th>Produto</th>
-            <th>Qtd</th>
-            <th>Subtotal</th>
-            <th />
-          </tr>
-        </thead>
-        <tbody>
-          {cart.map((product, index) => (
-            <tr>
-              <td>
-                <img src={product.image} alt={product.title} />
-              </td>
-              <td>
-                <strong>{product.title}</strong>
-                <span>{product.formattedPrice}</span>
-              </td>
-              <td>
-                <div>
-                  <button
-                    type="button"
-                    onClick={() => handleDecrement(product)}
-                  >
-                    <IoIosRemoveCircleOutline size="2rem" color="steelblue" />
-                  </button>
-                  <input type="number" readOnly value={product.amount} />
-                  <button
-                    type="button"
-                    onClick={() => handleIncrement(product)}
-                  >
-                    <IoIosAddCircleOutline size="2rem" color="steelblue" />
-                  </button>
-                </div>
-              </td>
-              <td>
-                <strong>{subtotal[index]}</strong>
-              </td>
-              <td>
-                <button onClick={() => handleRemove(product.id)}>
-                  <IoIosTrash size="2rem" color="steelblue" />
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </ProductTable>
+    <>
+      {cart.length > 0 ? (
+        <Container>
+          <ProductTable>
+            <thead>
+              <tr>
+                <th />
+                <th>Produto</th>
+                <th>Qtd</th>
+                <th>Subtotal</th>
+                <th />
+              </tr>
+            </thead>
+            <tbody>
+              {cart.map((product, index) => (
+                <tr>
+                  <td>
+                    <img src={product.image} alt={product.title} />
+                  </td>
+                  <td>
+                    <strong>{product.title}</strong>
+                    <span>{product.formattedPrice}</span>
+                  </td>
+                  <td>
+                    <div>
+                      <button
+                        type="button"
+                        onClick={() => handleDecrement(product)}
+                      >
+                        <IoIosRemoveCircleOutline
+                          size="2rem"
+                          color="steelblue"
+                        />
+                      </button>
+                      <input type="number" readOnly value={product.amount} />
+                      <button
+                        type="button"
+                        onClick={() => handleIncrement(product)}
+                      >
+                        <IoIosAddCircleOutline size="2rem" color="steelblue" />
+                      </button>
+                    </div>
+                  </td>
+                  <td>
+                    <strong>{subtotal[index]}</strong>
+                  </td>
+                  <td>
+                    <button onClick={() => handleRemove(product.id)}>
+                      <IoIosTrash size="2rem" color="steelblue" />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </ProductTable>
 
-      <footer>
-        <button type="button">Finalizar pedido</button>
+          <footer>
+            <button type="button">Finalizar pedido</button>
 
-        <Total>
-          <span>Total</span>
-          <strong>{total}</strong>
-        </Total>
-      </footer>
-    </Container>
+            <Total>
+              <span>Total</span>
+              <strong>{total}</strong>
+            </Total>
+          </footer>
+        </Container>
+      ) : (
+        <></>
+      )}
+    </>
   );
 };
 
