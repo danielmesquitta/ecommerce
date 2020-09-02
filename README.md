@@ -133,7 +133,7 @@ $ yarn
 $ yarn android
 
 # If it doesn't start automaticaly, just run the following and reopen the app
-$ yarn android
+$ yarn start
 ```
 
 The last step is to connect the app with the server. 
